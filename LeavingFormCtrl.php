@@ -17,25 +17,6 @@ $mobileno=$_POST['mobileno'];
 $cgpi=$_POST['cgpi'];
 
 
-$target_dir = "uploads/".$email."/";
-	if (!file_exists("uploads/".$email."/"))
-    	mkdir('uploads/'.$email."/", 0777, true);
-
-	$Signature=$target_dir."Signature.jpg";
-	move_uploaded_file($_FILES["Signature"]["tmp_name"],$Signature);
-
-	$Marksheet=$target_dir."Marksheet.jpg";
-	move_uploaded_file($_FILES["Marksheet"]["tmp_name"],$Marksheet);
-
-	$PassingCertificate=$target_dir."PassingCertificate.jpg";
-	move_uploaded_file($_FILES["PassingCertificate"]["tmp_name"],$PassingCertificate);
-
-	$NationalityProof=$target_dir."NationalityProof.jpg";
-	move_uploaded_file($_FILES["NationalityProof"]["tmp_name"],$NationalityProof);
-
-	$PreviousLeaving=$target_dir."PreviousLeaving.jpg";
-	move_uploaded_file($_FILES["PreviousLeaving"]["tmp_name"],$PreviousLeaving);
-
 $db="leavingform";
 
 $sql = "INSERT INTO $db (email,fname, lname,dob,appdate,admission,passing,cast,subcast,mobile,cgpi,gender,divi,course)
@@ -51,6 +32,27 @@ else
 }
 
 
-  $conn->close();
+
+$target_dir = "uploads/".$email."/";
+if (!file_exists("uploads/".$email."/"))
+	mkdir('uploads/'.$email."/", 0777, true);
+
+$Signature=$target_dir."Signature.jpg";
+move_uploaded_file($_FILES["Signature"]["tmp_name"],$Signature);
+
+$Marksheet=$target_dir."Marksheet.jpg";
+move_uploaded_file($_FILES["Marksheet"]["tmp_name"],$Marksheet);
+
+$PassingCertificate=$target_dir."PassingCertificate.jpg";
+move_uploaded_file($_FILES["PassingCertificate"]["tmp_name"],$PassingCertificate);
+
+$NationalityProof=$target_dir."NationalityProof.jpg";
+move_uploaded_file($_FILES["NationalityProof"]["tmp_name"],$NationalityProof);
+
+$PreviousLeaving=$target_dir."PreviousLeaving.jpg";
+move_uploaded_file($_FILES["PreviousLeaving"]["tmp_name"],$PreviousLeaving);
+
+$conn->close();
+
 
 ?>
